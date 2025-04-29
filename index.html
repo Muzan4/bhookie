@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bhookie</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Basic styles for responsiveness and hover effects */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+          position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+
+        }
+
+        .nav-links li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #ff6347; /* Highlight color */
+        }
+
+        .hero-section {
+            height: 100vh;
+            background: url('images/hero-bg.jpg') no-repeat center center/cover; /* Example background */
+            position: relative;
+            padding-top: 60px; /* Space for fixed navbar */
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            padding: 20px;
+            margin-top: 60px; /* Add margin to push content below navbar */
+        }
+
+        .order-btn {
+            background-color: #ff6347;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .order-btn:hover {
+            background-color: #e5533d; /* Darker shade on hover */
+        }
+
+        .menu-card {
+            cursor: pointer; /* Indicate clickable */
+            transition: transform 0.3s;
+        }
+
+        .menu-card:hover {
+            transform: scale(1.05); /* Slight zoom effect */
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Background with Navbar on top -->
+    <div class="hero-section">
+        <nav class="navbar">
+            <div class="nav-logo">
+                <img id="navLogo" src="images/logo.png" alt="Bhookie Logo" />
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="#about">About Us</a></li>
+<li><a href="contact_us.html">Contact</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <a href="#" class="login-btn">Login</a>
+<a href="#" class="signup-btn"><img src="images/user.png" alt="User Icon" style="height: 20px; width: 20px;"></a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Hero Content -->
+    <div class="hero-content" id="home">
+        <h2 class="headline">FLAVOUR BLAST</h2>
+        <p class="subtext">Your favourite food delivered to you!<br>Fresh and yummy...</p>
+        <div class="order-section">
+            <img src="images/chalk.png" alt="doodle" class="doodle">
+            <a href="#menu" class="order-btn">ORDER NOW</a>
+        </div>
+    </div>
+
+    <!-- Menu Section -->
+    <div class="menu-section" id="menu">
+        <h2 class="menu-title">OUR MENU</h2>
+        <p class="menu-subtitle">Order now and enjoy the magic...</p>
+
+        <div class="menu-cards">
+            <div class="menu-card" onclick="openModal('burger')">
+                <img src="images/burger.png" alt="Burger">
+                <p class="menu-desc">Juicy. Loaded. Grilled</p>
+                <h3>BURGERS</h3>
+            </div>
+
+            <div class="menu-card" onclick="openModal('wrap')">
+                <img src="images/wrap.png" alt="Wrap">
+                <p class="menu-desc">Crispy. Saucy. Satisfying</p>
+                <h3>WRAPS</h3>
+            </div>
+
+            <div class="menu-card" onclick="openModal('fries')">
+                <img src="images/fries.png" alt="Fries">
+                <p class="menu-desc">Crispy. Golden. Irresistible</p>
+                <h3>FRIES</h3>
+            </div>
+
+            <div class="menu-card" onclick="openModal('vada')">
+                <img src="images/vada.png" alt="Vada">
+                <p class="menu-desc">Bold. Flavorful. Spicy</p>
+                <h3>STREET BITES</h3>
+            </div>
+
+            <div class="menu-card" onclick="openModal('chai')">
+                <img src="images/chai.png" alt="Chai">
+                <p class="menu-desc">Aroma. Comfort. Spiced</p>
+                <h3>DRINKS</h3>
+            </div>
+
+            <div class="menu-card" onclick="openModal('bites')">
+                <img src="images/bites.png" alt="Bites">
+                <p class="menu-desc">Crispy. Golden. Irresistible</p>
+                <h3>BITES</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- View More Button -->
+    <div class="view-more-container">
+        <a href="#menu" class="view-more-btn">VIEW MORE</a>
+    </div>
+
+    <!-- About Us Section -->
+    <div class="about-section" id="about">
+        <h2 class="about-title">ABOUT US</h2>
+        <p class="about-subtitle">Meet the Bhookies</p>
+    </div>
+
+    <!-- About Us Detail Section -->
+    <div class="about-detail">
+        <div class="about-img">
+            <div class="vadapav">
+                <div class="ingredient bun-bottom"></div>
+                <div class="ingredient potato_vada"></div>
+                <div class="ingredient mirchi"></div>
+                <div class="ingredient chutney"></div>
+                <div class="ingredient bun-top"></div>
+            </div>
+        </div>
+
+        <div class="about-text">
+            <p>
+                At Bhookie, we’re all about bold flavors, big cravings, and unforgettable bites.
+                Born from a passion for street-style fusion food, Bhookie brings together the best
+                of global comfort dishes with a desi twist. Whether it’s our loaded burgers,
+                spicy wraps, crispy fries, or signature street bites — every item is crafted to
+                deliver a punch of flavor and satisfaction in every bite.
+            </p>
+            <a href="#" class="view-more-btn">VIEW MORE</a>
+        </div>
+    </div>
+
+    <footer class="footer" id="contact">
+        <div class="footer-container">
+            <!-- About -->
+            <div class="footer-column about">
+                <h3>About</h3>
+                <p>Bhookie is a bold and fresh quick-bite fusion food startup bringing the taste of India to the streets of Liverpool, UK. With a unique focus on iconic items like Vada Pav and Chicken Fries, we’re redefining street food culture abroad. Bhookie blends tradition and creativity — delivering memorable bites packed with flavor and personality.</p>
+            </div>
+
+            <!-- Menu -->
+            <div class="footer-column menu">
+                <h3>Menu</h3>
+                <ul>
+                    <li>STREET BITES</li>
+                    <li >FRIES</li>
+                    <li>BITES</li>
+                    <li>WRAPS</li>
+                    <li>BURGERS</li>
+                    <li>FUSION SPECIAL</li>
+                    <li>DRINKS</li>
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div class="footer-column contact">
+                <h3>Contact</h3>
+                <p>123 Street, City<br>info@example.com<br>+1234567890</p>
+            </div>
+        </div>
+
+        <!-- Bottom Footer -->
+        <div class="footer-bottom">
+            <p>&copy; BHOOKIE. All Rights Reserved.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Structure -->
+    <div id="menuModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle">TIOTOL</h2>
+            <p id="modalDescription">this is a vadabav</p>
+            <button class="order-btn">back</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const vadapav = document.querySelector('.vadapav');
+            let lastScroll = window.scrollY;
+
+            window.addEventListener('scroll', () => {
+                const currentScroll = window.scrollY;
+                const scrollDirection = currentScroll > lastScroll ? 'down' : 'up';
+                lastScroll = currentScroll;
+
+                const container = document.querySelector('.vadapav');
+                const containerTop = container.getBoundingClientRect().top;
+                const triggerPoint = window.innerHeight * 0.8;
+
+                if (containerTop < triggerPoint) {
+                    vadapav.classList[scrollDirection === 'down' ? 'add' : 'remove']('expanded');
+                }
+            });
+
+            // Smooth scrolling for internal links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+
+        function openModal(item) {
+            const modal = document.getElementById("menuModal");
+            const title = document.getElementById("modalTitle");
+            const description = document.getElementById("modalDescription");
+
+            switch (item) {
+                case 'burger':
+                    title.innerText = "BURGERS";
+                    description.innerText = "Juicy. Loaded. Grilled.";
+                    break;
+                case 'wrap':
+                    title.innerText = "WRAPS";
+                    description.innerText = "Crispy. Saucy. Satisfying.";
+                    break;
+                case 'fries':
+                    title.innerText = "FRIES";
+                    description.innerText = "Crispy. Golden. Irresistible.";
+                    break;
+                case 'vada':
+                    title.innerText = "STREET BITES";
+                    description.innerText = "Bold. Flavorful. Spicy.";
+                    break;
+                case 'chai':
+                    title.innerText = "DRINKS";
+                    description.innerText = "Aroma. Comfort. Spiced.";
+                    break;
+                case 'bites':
+                    title.innerText = "BITES";
+                    description.innerText = "Crispy. Golden. Irresistible.";
+                    break;
+            }
+
+            modal.style.display = "block";
+        }
+
+        function closeModal() {
+            const modal = document.getElementById("menuModal");
+            modal.style.display = "none";
+        }
+
+        window.onclick = function (event) {
+            const modal = document.getElementById("menuModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+
+</html>

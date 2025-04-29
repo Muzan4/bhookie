@@ -1,0 +1,551 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #191917;
+  color: white;
+  
+}
+
+/* HERO SECTION WITH BACKGROUND */
+.hero-section {
+  background-image: url('images/bg1.png');
+  background-size: cover;
+  background-position: center;
+  height: 1500px;
+  width: 100%;
+  position: relative;
+}
+
+
+
+/* NAVBAR STYLING */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 0px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+
+}
+
+.nav-logo {
+  display: flex;
+  align-items: left;
+  height: 80px;
+  margin-left: -20px;  /* Adjust the value as needed */
+}
+
+.nav-logo img {
+  width: 200px;
+  height: auto;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  transform-origin: top left;
+  opacity: 1;
+}
+
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  position: relative;
+}
+
+.nav-links li a.active {
+  font-weight: 600;
+}
+
+.nav-links li a.active::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #ff6b00;
+}
+
+.nav-buttons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.login-btn {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.signup-btn {
+  background-color: white;
+  color: #121212;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgb(8, 6, 6); /* debug border */
+  background-color: rgb(255, 255, 255); /* debug background */
+}
+
+.signup-btn img {
+  height: 20px;
+  width: 20px;
+  display: block;
+ 
+  background-color: rgb(255, 255, 255); /* debug background */
+}
+
+.signup-btn img {
+  height: 20px;
+  width: 20px;
+  display: block;
+}
+
+/* HERO CONTENT */
+.hero-content {
+position: absolute;
+top: 60px;
+left: 0;
+width: 100%;
+display: flex;
+justify-content: center;
+flex-direction: column;
+text-align: center;
+padding: 0 20px;
+}
+
+#heroLogo {
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  transform-origin: top center;
+}
+
+
+.hero-text {
+  max-width: 800px;
+  width: 100%;
+}
+
+
+.hero-logo img {
+  width: 800px;
+  max-width: 100%;
+  height: auto;
+  margin-bottom: -20px;
+}
+
+#heroLogo {
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  transform-origin: top center;
+  z-index: 50;
+    transition: transform 1s ease, opacity 1s ease;
+  }
+
+
+.hero-logo.shrink {
+  position: fixed;
+  top: 1px;
+  left: 20px;
+  width: 200px; /* Final smaller width */
+  z-index: 1000;
+}
+
+.hero-logo.shrink #heroLogo {
+  transform: scale(1); 
+  opacity: 1;
+}
+
+.hero-logo-placeholder {
+  height: 0;
+  transition: height 0.5s ease;
+}
+
+.hero-logo.shrink + .hero-logo-placeholder {
+  height: 500px; /* Adjust based on how much space the logo moves up */
+}
+
+.headline {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 12px;
+  letter-spacing: 2px;
+}
+
+.subtext {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: #dcdcdc;
+  line-height: 1.6;
+  letter-spacing: 5px;
+  margin-bottom: 20px;
+}
+
+.order-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding-right: 130PX;
+  flex-wrap: wrap;
+}
+
+.doodle {
+  width: 100px;
+  height: auto;
+}
+
+.order-btn {
+  background-color: #ff6b00;
+  color: white;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 600;
+  padding: 12px 28px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 16px;
+  transition: background 0.3s ease;
+}
+
+.order-btn:hover {
+  background-color: #e65c00;
+}
+
+
+/* === MENU SECTION === */
+.menu-section {
+  margin-top: 120px;
+  padding: 40px 60px; /* more left-right padding for breathing room */
+  position: relative;
+  z-index: 2;
+  text-align: left; /* shift all content to left */
+}
+
+.menu-title {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 44px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: white;
+  margin-bottom: 10px;
+  padding-left: 220px;
+}
+
+.menu-subtitle {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  color: #dcdcdc;
+  letter-spacing: 5px;
+  margin-bottom: 40px;
+  padding-left: 140px;
+}
+
+.menu-cards {
+  display: flex;
+  justify-content: flex-start; /* align cards to the left */
+  flex-wrap: wrap;
+}
+
+.menu-card {
+  position: relative; /* needed so the img can position itself relative to the card */
+  overflow: visible; /* make sure the image isn't cut off */
+  margin-top: 100px;
+  margin-left: 80px;
+  margin-bottom: 30px;
+  background: linear-gradient(to bottom, #191917, #ff6a0017, #ff6a005a, #ff6b00);
+  border-radius: 20px;
+  padding: 30px 25px 25px 25px;
+  width: 260px;
+  height: 250px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease;
+  text-align: center;
+}
+
+
+.menu-card:hover {
+  transform: translateY(-10px);
+}
+
+.menu-card img {
+  width: 170px;
+  height: auto;
+  margin-bottom: 0;
+  margin-top: -80px; /* This makes it pop out of the top */
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.2));
+}
+
+.menu-desc {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  color: #f0f0f0;
+  padding-top: 50px;
+  margin-bottom: 8px;
+}
+
+.menu-card h3 {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 26px;
+  font-weight: 300;
+  letter-spacing: 3px;
+  color: white;
+  padding-top: 8px;
+  margin: 0;
+}
+
+
+/* View More Button Section */
+.view-more-container {
+  text-align: center;
+  
+}
+
+.view-more-btn {
+  display: inline-block;
+  padding: 12px 30px;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: black;
+  background-color: white;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.view-more-btn:hover {
+  background-color: #ff6b00;
+  color: white;
+}
+
+/* About Section */
+.about-section {
+  text-align: center;
+  margin-top: 80px;
+  color: white;
+}
+
+.about-title {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 44px;
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+
+.about-subtitle {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  letter-spacing: 5px;
+  color: #dcdcdc;
+}
+
+
+/* About Detail Section */
+.about-detail {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  margin: 30px auto;
+  max-width: 1200px;
+  padding: 0 50px;
+  color: white;
+  flex-wrap: wrap; /* make responsive */
+}
+
+.about-img img {
+  width: 350px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-right: 70px;
+  
+}
+
+.about-text {
+  max-width: 400px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #f1f1f1;
+  text-align: left;
+}
+
+.about-text .view-more-btn {
+  margin-top: 30px;
+  display: inline-block;
+  padding: 10px 30px;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: black;
+  background-color: white;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.about-text .view-more-btn:hover {
+  background-color: #ff6b00;
+  color: white;
+}
+
+.vadapav {
+  position: relative;
+  margin-top: 50px;
+  width: 350px;
+  height: 350px;
+  margin-top: 100px;
+}
+
+.ingredient {
+  position: absolute;
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  background-size: contain;
+  margin-top: 60px;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.1));
+}
+
+.bun-bottom { 
+  width: 80%;
+  height: 110%;
+  background-image: url("images/but_bottom.png");
+  z-index: 1;
+}
+
+.potato_vada {
+  width: 60%;
+  height: 60%;
+  left: 10%;
+  background-image: url("images/potato_vada.png");
+  z-index: 2;
+}
+
+.mirchi {
+  width: 50%;
+  height: 40%;
+  left: 15%;
+  background-image: url("images/mirchi.png");
+  z-index: 2;
+}
+
+.chutney {
+  width: 60%;
+  height: 60%;
+  left: 40px;
+  background-image: url("images/chutney.png");
+  z-index: 2;
+}
+
+.bun-top {
+  width: 70%;
+  height: 50%;
+  left: 35px;
+  background-image: url("images/bun_top.png");
+  z-index: 4;
+}
+
+/* Animation movement */
+.expanded .potato_vada { transform: translateY(-45px) rotate(-4deg); }
+.expanded .mirchi { transform: translateY(-80px) scale(1.05) rotate(2deg); }
+.expanded .chutney { transform: translateY(-120px) rotate(4deg); }
+.expanded .bun-top { transform: translateY(-160px) rotate(-2deg); }
+
+
+
+
+.footer {
+  background: linear-gradient(to top, #ff6b00, #ff6a0072, #191917);
+  color: white;
+  padding: 60px 40px 20px;
+  margin-top: 1200px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.footer-column {
+  flex: 1 1 300px;
+}
+
+.footer-column h3 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.footer-column p,
+.footer-column li {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #f0f0f0;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-column li {
+  margin-bottom: 10px;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  margin-top: 40px;
+  padding-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-bottom p {
+  font-size: 14px;
+  margin: 0;
+}
+
+.social-icons i {
+  font-size: 22px;
+  margin-left: 20px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.social-icons i:hover {
+  color: #ff6b00;
+}
