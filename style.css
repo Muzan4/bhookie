@@ -13,9 +13,9 @@ body {
 
 /* HERO SECTION WITH BACKGROUND */
 .hero-section {
-  background-image: url('images/bg1.png');
-  background-size: cover;
-  background-position: center;
+  /* background-image: url('images/bg1.png'); */
+  /* background-size: cover; */
+  /* background-position: center; */
   height: 1500px;
   width: 100%;
   position: relative;
@@ -128,7 +128,7 @@ body {
 .hero-content {
 position: absolute;
 top: 60px;
-left: 0;
+left: 30px;
 width: 100%;
 display: flex;
 justify-content: center;

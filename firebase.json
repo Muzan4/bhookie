@@ -1,19 +1,10 @@
 {
-  "hosting": [
-    {
-      "target": "bhookiehome-345",
-      "public": "C:/Users/AABID/Desktop/bhookie",
+    "hosting": {
+      "public": ".",
       "ignore": [
         "firebase.json",
         "**/.*",
         "**/node_modules/**"
-      ],
-      "rewrites": [
-        {
-          "source": "**",
-          "destination": "/index.html"
-        }
       ]
     }
-  ]
-}
+  }

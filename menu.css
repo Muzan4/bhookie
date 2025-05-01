@@ -22,7 +22,7 @@ body {
 
 /* NAVBAR STYLING */
 .navbar {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -31,6 +31,8 @@ body {
   align-items: center;
   justify-content: space-between;
   z-index: 100;
+  background-color: rgba(28, 27, 27, 0.5);
+  backdrop-filter: blur(4px);
 }
 
 .nav-logo {
@@ -48,11 +50,13 @@ body {
   list-style: none;
   display: flex;
   gap: 30px;
+  justify-content: center; /* center align nav links */
+  width: 100%;
 }
 
 .nav-links li a {
   text-decoration: none;
-  color: white;
+  color: #fffefe;
   font-size: 14px;
   font-weight: 500;
   position: relative;
@@ -69,7 +73,7 @@ body {
   left: 0;
   width: 100%;
   height: 2px;
-  background-color: #ff6b00;
+  background-color: #ff6347;
 }
 
 .nav-buttons {

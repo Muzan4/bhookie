@@ -27,7 +27,7 @@
   align-items: center;
   justify-content: space-between;
   z-index: 100;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(28, 27, 27, 0.5);
   backdrop-filter: blur(4px);
 
         }
@@ -50,16 +50,20 @@
 
         .hero-section {
             height: 100vh;
-            background: url('images/hero-bg.jpg') no-repeat center center/cover; /* Example background */
+            background: url('images/bg1.png') no-repeat right center;
+            background-size: 60% auto; /* Slightly reduce the size of the background image */
             position: relative;
             padding-top: 60px; /* Space for fixed navbar */
         }
 
         .hero-content {
-            text-align: center;
+            text-align: left;
             color: white;
             padding: 20px;
             margin-top: 60px; /* Add margin to push content below navbar */
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
         }
 
         .order-btn {
@@ -69,6 +73,10 @@
             text-decoration: none;
             border-radius: 5px;
             transition: background-color 0.3s;
+        }
+
+        .order-section {
+            text-align: left;
         }
 
         .order-btn:hover {
@@ -119,6 +127,35 @@
             text-decoration: none;
             cursor: pointer;
         }
+        .about-section {
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .about-detail {
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+
+        .menu-section {
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .footer {
+            margin-top: 0;
+            padding-top: 18;
+        }
+
+        .footer-container {
+            margin-top: 0;
+            padding-top: 0;
+        }
+
+        .footer-bottom {
+            margin-top: 0;
+            padding-top: 0;
+        }
     </style>
 </head>
 
@@ -136,7 +173,6 @@
 <li><a href="contact_us.html">Contact</a></li>
             </ul>
             <div class="nav-buttons">
-                <a href="#" class="login-btn">Login</a>
 <a href="#" class="signup-btn"><img src="images/user.png" alt="User Icon" style="height: 20px; width: 20px;"></a>
             </div>
         </nav>
@@ -148,14 +184,16 @@
         <p class="subtext">Your favourite food delivered to you!<br>Fresh and yummy...</p>
         <div class="order-section">
             <img src="images/chalk.png" alt="doodle" class="doodle">
-            <a href="#menu" class="order-btn">ORDER NOW</a>
+            <a href="menu.html" class="order-btn">ORDER NOW</a>
         </div>
     </div>
 
     <!-- Menu Section -->
     <div class="menu-section" id="menu">
-        <h2 class="menu-title">OUR MENU</h2>
-        <p class="menu-subtitle">Order now and enjoy the magic...</p>
+        <div style="text-align: center;">
+            <h2 class="menu-title">OUR MENU‎‎ ‎‎ ‎ ‎ ‎ ‎ </h2>
+            <p class="menu-subtitle">Order now and enjoy the magic...</p>
+        </div>
 
         <div class="menu-cards">
             <div class="menu-card" onclick="openModal('burger')">
@@ -198,7 +236,7 @@
 
     <!-- View More Button -->
     <div class="view-more-container">
-        <a href="#menu" class="view-more-btn">VIEW MORE</a>
+        <a href="menu.html" class="view-more-btn">VIEW MORE</a>
     </div>
 
     <!-- About Us Section -->
