@@ -1,3 +1,4 @@
+
 * {
   margin: 0;
   padding: 0;
@@ -17,111 +18,91 @@ body {
   /* background-size: cover; */
   /* background-position: center; */
   height: 1500px;
+  
   width: 100%;
   position: relative;
 }
 
-
-
-/* NAVBAR STYLING */
+/* Navbar */
 .navbar {
+  width: 100%;
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  padding: 0px 60px;
+  padding: 20px 50px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  z-index: 100;
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px);
-
+  align-items: center;
+  z-index: 1000;
+  transition: background-color 0.3s ease;
 }
 
-.nav-logo {
-  display: flex;
-  align-items: left;
-  height: 80px;
-  margin-left: -20px;  /* Adjust the value as needed */
+.navbar.transparent {
+  background-color: transparent;
 }
 
+.navbar.scrolled {
+  background-color: rgba(19, 19, 18, 0.7);
+}
+
+/* Logo */
 .nav-logo img {
-  width: 200px;
-  height: auto;
-  transition: transform 0.5s ease, opacity 0.5s ease;
-  transform-origin: top left;
-  opacity: 1;
+  height: 70px;
 }
 
-
+/* Navigation Links */
 .nav-links {
-  list-style: none;
   display: flex;
-  gap: 30px;
+  list-style: none;
+  gap: 40px;
 }
 
-.nav-links li a {
+.nav-links a {
   text-decoration: none;
   color: white;
-  font-size: 14px;
   font-weight: 500;
+  font-size: 18px;
   position: relative;
+  transition: color 0.3s ease;
 }
 
-.nav-links li a.active {
-  font-weight: 600;
-}
-
-.nav-links li a.active::after {
-  content: "";
+.nav-links a::after {
+  content: '';
   position: absolute;
-  bottom: -6px;
-  left: 0;
-  width: 100%;
+  width: 0%;
   height: 2px;
-  background-color: #ff6b00;
+  left: 0;
+  bottom: -5px;
+  background-color: #FF5E18;
+  transition: width 0.3s ease;
 }
 
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-links a.active::after {
+  width: 100%;
+}
+
+
+.nav-links a:hover {
+  color: #ffffff;
+}
+
+/* Right Side Button */
 .nav-buttons {
   display: flex;
   align-items: center;
-  gap: 20px;
-}
-
-.login-btn {
-  color: white;
-  text-decoration: none;
-  font-size: 14px;
 }
 
 .signup-btn {
   background-color: white;
-  color: #121212;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 600;
-  padding: 6px 16px;
-  border-radius: 20px;
+  padding: 10px 20px;
+  border-radius: 999px;
   display: flex;
-  align-items: center;
   justify-content: center;
-  border: 2px solid rgb(8, 6, 6); /* debug border */
-  background-color: rgb(255, 255, 255); /* debug background */
-}
-
-.signup-btn img {
-  height: 20px;
-  width: 20px;
-  display: block;
- 
-  background-color: rgb(255, 255, 255); /* debug background */
-}
-
-.signup-btn img {
-  height: 20px;
-  width: 20px;
-  display: block;
+  align-items: center;
 }
 
 /* HERO CONTENT */
@@ -135,6 +116,7 @@ justify-content: center;
 flex-direction: column;
 text-align: center;
 padding: 0 20px;
+padding-left: 50px;
 }
 
 #heroLogo {
@@ -146,6 +128,7 @@ padding: 0 20px;
 .hero-text {
   max-width: 800px;
   width: 100%;
+  padding-left: 50px;
 }
 
 
@@ -550,5 +533,5 @@ padding: 0 20px;
 }
 
 .social-icons i:hover {
-  color: #ff6b00;
+  color: #ff6b00;
 }

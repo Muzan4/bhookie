@@ -17,56 +17,33 @@
             padding: 0;
         }
 
-        .navbar {
-          position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 0px 60px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  z-index: 100;
-  background-color: rgba(28, 27, 27, 0.5);
-  backdrop-filter: blur(4px);
-
-        }
-
-        .nav-links li {
-            display: inline;
-            margin: 0 15px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #333;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: #ff6347; /* Highlight color */
-        }
-
         .hero-section {
             height: 100vh;
+            
             background: url('images/bg1.png') no-repeat right center;
-            background-size: 60% auto; /* Slightly reduce the size of the background image */
+            background-size: 80% auto;
+            /* Slightly reduce the size of the background image */
             position: relative;
-            padding-top: 60px; /* Space for fixed navbar */
+            padding-top: 100px;
+            /* Space for fixed navbar */
         }
 
         .hero-content {
             text-align: left;
             color: white;
+            
             padding: 20px;
-            margin-top: 60px; /* Add margin to push content below navbar */
+            margin-top: 60px;
+            /* Add margin to push content below navbar */
             display: flex;
             flex-direction: column;
             align-items: flex-start;
+            padding-left: 140px;
+            padding-top: 90px;
         }
 
         .order-btn {
+
             background-color: #ff6347;
             color: white;
             padding: 10px 20px;
@@ -80,21 +57,25 @@
         }
 
         .order-btn:hover {
-            background-color: #e5533d; /* Darker shade on hover */
+            background-color: #e5533d;
+            /* Darker shade on hover */
         }
 
         .menu-card {
-            cursor: pointer; /* Indicate clickable */
+            cursor: pointer;
+            /* Indicate clickable */
             transition: transform 0.3s;
         }
 
         .menu-card:hover {
-            transform: scale(1.05); /* Slight zoom effect */
+            transform: scale(1.05);
+            /* Slight zoom effect */
         }
 
         /* Modal styles */
         .modal {
-            display: none; /* Hidden by default */
+            display: none;
+            /* Hidden by default */
             position: fixed;
             z-index: 1000;
             left: 0;
@@ -127,6 +108,7 @@
             text-decoration: none;
             cursor: pointer;
         }
+
         .about-section {
             margin-bottom: 0;
             padding-bottom: 0;
@@ -142,6 +124,7 @@
             margin-bottom: 0;
             padding-bottom: 0;
         }
+
         .footer {
             margin-top: 0;
             padding-top: 18;
@@ -167,13 +150,14 @@
                 <img id="navLogo" src="images/logo.png" alt="Bhookie Logo" />
             </div>
             <ul class="nav-links">
-                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="menu.html">Menu</a></li>
-                <li><a href="#about">About Us</a></li>
-<li><a href="contact_us.html">Contact</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="contact_us.html">Contact</a></li>
             </ul>
             <div class="nav-buttons">
-<a href="login.html" class="signup-btn"><img src="images/user.png" alt="User Icon" style="height: 20px; width: 20px;"></a>
+                <a href="login.html" class="signup-btn"><img src="images/user.png" alt="User Icon"
+                        style="height: 20px; width: 20px;"></a>
             </div>
         </nav>
     </div>
@@ -274,7 +258,10 @@
             <!-- About -->
             <div class="footer-column about">
                 <h3>About</h3>
-                <p>Bhookie is a bold and fresh quick-bite fusion food startup bringing the taste of India to the streets of Liverpool, UK. With a unique focus on iconic items like Vada Pav and Chicken Fries, we’re redefining street food culture abroad. Bhookie blends tradition and creativity — delivering memorable bites packed with flavor and personality.</p>
+                <p>Bhookie is a bold and fresh quick-bite fusion food startup bringing the taste of India to the streets
+                    of Liverpool, UK. With a unique focus on iconic items like Vada Pav and Chicken Fries, we’re
+                    redefining street food culture abroad. Bhookie blends tradition and creativity — delivering
+                    memorable bites packed with flavor and personality.</p>
             </div>
 
             <!-- Menu -->
@@ -282,7 +269,7 @@
                 <h3>Menu</h3>
                 <ul>
                     <li>STREET BITES</li>
-                    <li >FRIES</li>
+                    <li>FRIES</li>
                     <li>BITES</li>
                     <li>WRAPS</li>
                     <li>BURGERS</li>
@@ -320,6 +307,19 @@
     </div>
 
     <script>
+
+
+        window.addEventListener('scroll', function () {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 0) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+
+
         document.addEventListener('DOMContentLoaded', () => {
             const vadapav = document.querySelector('.vadapav');
             let lastScroll = window.scrollY;
