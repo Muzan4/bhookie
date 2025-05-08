@@ -1,0 +1,105 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: url('images/bgab.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  padding: 1rem;
+  min-height: 100vh;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.logo {
+  width: 120px;
+}
+
+nav ul {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.about-section {
+  padding: 2rem 0;
+}
+
+.intro h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.intro h3 {
+  color: #ff5e00;
+  margin-bottom: 1rem;
+}
+
+.intro p,
+.inspiration p {
+  margin-bottom: 1rem;
+  max-width: 700px;
+}
+
+.inspiration {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+
+.inspiration img {
+  width: 200px;
+  border-radius: 1rem;
+}
+
+.sauces {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 3rem 0;
+}
+
+.sauce-frame {
+  text-align: center;
+}
+
+.sauce-frame img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.burger-banner {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.burger-banner img {
+  max-width: 300px;
+  margin-bottom: 1rem;
+}
+
+.tagline {
+  color: #ff5e00;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-shadow: 1px 1px 2px black;
+}

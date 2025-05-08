@@ -37,6 +37,7 @@
         <h1 class="login-title">Login</h1>
         <label for="input" id="input-label" class="phone-label">PHONE NUMBER</label>
         <input type="tel" id="input-field" class="phone-input" placeholder="Phone number" required />
+        <input type="text" id="name-field" class="phone-input" placeholder="Enter your name" style="display:none; margin-top: 10px;" />
         <button type="button" class="continue-btn" id="action-btn" onclick="handleLogin()">Continue</button>
         <p id="message" style="color: lightgreen; margin-top: 10px;"></p>
       </div>
@@ -56,6 +57,7 @@
     });
 
     let step = 1;
+    let savedPhone = '';
 
     function handleLogin() {
       const inputField = document.getElementById("input-field");
@@ -72,6 +74,8 @@
           return;
         }
 
+        savedPhone = phone; // Save phone number for later use
+
         // Proceed to OTP step
         label.textContent = "ENTER OTP";
         inputField.value = "";
@@ -84,6 +88,8 @@
         const otp = inputField.value.trim();
 
         if (otp === "1234") {
+          // Store saved phone number in localStorage before redirecting
+          localStorage.setItem('loggedInPhone', savedPhone);
           // Redirect to profile page after successful login
           window.location.href = "myprofile.html";
         } else {
@@ -91,6 +97,134 @@
         }
       }
     }
+    
+  </script>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+            apiKey: "AIzaSyA5jVQcxmKKLQy31Ft8329EB_cWRyBu0uI",
+            authDomain: "bhookiecore.firebaseapp.com",
+            databaseURL: "https://bhookiecore-default-rtdb.firebaseio.com",
+            projectId: "bhookiecore",
+            storageBucket: "bhookiecore.firebasestorage.app",
+            messagingSenderId: "252666746613",
+            appId: "1:252666746613:web:460ba1d0124c6f9a2d17bc",
+            measurementId: "G-NHRT2XRJRB"
+        };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    async function checkAndSavePhoneNumber(phone, name) {
+      const docRef = db.collection("messages").doc(phone);
+      const doc = await docRef.get();
+      if (!doc.exists) {
+        // Save new phone number as a new document with name and phone field
+        await docRef.set({ 
+          createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+          name: name,
+          phone: phone
+        });
+        return true; // new number saved
+      }
+      return false; // number already exists
+    }
+
+    async function handleLogin() {
+      const inputField = document.getElementById("input-field");
+      const label = document.getElementById("input-label");
+      const button = document.getElementById("action-btn");
+      const message = document.getElementById("message");
+      const nameField = document.getElementById("name-field");
+
+      if (step === 1) {
+        const phone = inputField.value.trim();
+        const phoneRegex = /^[0-9]{10}$/;
+
+        if (!phoneRegex.test(phone)) {
+          alert("Please enter a valid 10-digit phone number.");
+          return;
+        }
+
+        // If name input is visible, get the name value and save data
+        if (nameField.style.display === "block") {
+          const name = nameField.value.trim();
+          if (!name) {
+            alert("Name is required for new users.");
+            return;
+          }
+          try {
+            const isNew = await checkAndSavePhoneNumber(phone, name);
+            if (isNew) {
+              message.textContent = "New phone number saved.";
+            } else {
+              message.textContent = "Phone number exists.";
+            }
+          } catch (error) {
+            alert("Error accessing database: " + error.message);
+            return;
+          }
+          // Hide name input field after saving
+          nameField.style.display = "none";
+          nameField.value = "";
+
+          // Proceed to OTP step
+          label.textContent = "ENTER OTP";
+          inputField.value = "";
+          inputField.placeholder = "Enter OTP";
+          inputField.type = "text";
+          button.textContent = "Login";
+          if (!message.textContent) {
+            message.textContent = "OTP sent to your phone number.";
+          }
+          step = 2;
+          return;
+        }
+
+        // Check if new number and show name input if needed
+        try {
+          const docRef = db.collection("messages").doc(phone);
+          const doc = await docRef.get();
+          if (!doc.exists) {
+            // Show name input field
+            nameField.style.display = "block";
+            message.textContent = "Creating new account. Please enter your name.";
+            return;
+          }
+        } catch (error) {
+          alert("Error accessing database: " + error.message);
+          return;
+        }
+
+        // Proceed to OTP step if number exists
+        label.textContent = "ENTER OTP";
+        inputField.value = "";
+        inputField.placeholder = "Enter OTP";
+        inputField.type = "text";
+        button.textContent = "Login";
+        message.textContent = "OTP sent to your phone number.";
+        step = 2;
+      } else if (step === 2) {
+        const otp = inputField.value.trim();
+
+        if (otp === "1234") {
+          // Store phone number in localStorage before redirecting
+          localStorage.setItem('loggedInPhone', inputField.value.trim());
+          // Redirect to profile page after successful login
+          window.location.href = "myprofile.html";
+        } else {
+          alert("Incorrect OTP. Try again.");
+        }
+      }
+    }
+
+
   </script>
 </body>
 
